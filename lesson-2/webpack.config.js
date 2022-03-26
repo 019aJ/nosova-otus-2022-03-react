@@ -3,10 +3,13 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: "./src/index.tsx",
+  entry: "./src/index.ts",
   devtool: "source-map",
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx", ".json"],
+    fallback: {
+      fs: false,
+    },
   },
   output: {
     path: path.join(__dirname, "/dist"),
@@ -29,4 +32,4 @@ module.exports = {
       template: "./src/index.html",
     }),
   ],
-};
+}
