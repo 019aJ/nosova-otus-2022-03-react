@@ -1,0 +1,61 @@
+import {
+  mul,
+  div,
+  add,
+  minus,
+  sqr,
+  power,
+  sin,
+  cos,
+  factorial,
+} from "./mathOperators";
+
+describe("mathOperators test cases", () => {
+  it("mul 1 * 2 to equal 2", () => {
+    expect(mul(1, 2)).toBe(2);
+  });
+
+  it("mul 2 * 2 to equal 4", () => {
+    expect(mul(2, 2)).toBe(4);
+  });
+
+  it("div 2 / 2 to equal 1", () => {
+    expect(div(2, 2)).toBe(1);
+  });
+
+  it("div 4 / 2 to equal 2", () => {
+    expect(div(4, 2)).toBe(2);
+  });
+
+  it("add 4 + 2 to equal 6", () => {
+    expect(add(4, 2)).toBe(6);
+  });
+
+  it("minus 4 - 2 to equal 2", () => {
+    expect(minus(4, 2)).toBe(2);
+  });
+
+  it("sqr 2** to equal 4", () => {
+    expect(sqr(2)).toBe(4);
+  });
+
+  it("power 4 ^ 2 to equal 16", () => {
+    expect(power(4, 2)).toBe(16);
+  });
+
+  it("power 4 ^ 0 to equal 1", () => {
+    expect(power(4, 0)).toBe(1);
+  });
+
+  it("sin 0 to equal 0", () => {
+    expect(sin(0)).toBe(0);
+  });
+
+  it("cos 0 to equal PI", () => {
+    expect(cos(0)).toBe(1);
+  });
+
+  it("factorial 4 to equal 24", () => {
+    expect(factorial(4)).toBe(24);
+  });
+});
