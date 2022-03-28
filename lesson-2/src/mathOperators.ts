@@ -75,13 +75,3 @@ export const mathOperatorsPriorities: { [key: string]: number } = {
   cos: FIRST,
   factorial: FIRST,
 };
-
-export const isSupportedOperation = (name: string): boolean =>
-  mathOperators.hasOwnProperty(name) ||
-  mathSingleOperandOperators.hasOwnProperty(name);
-
-export const operandCount = (item: string): number => {
-  if (typeof mathOperators[item] === typeof mathOperators["*"]) {
-  }
-  return 1;
-};

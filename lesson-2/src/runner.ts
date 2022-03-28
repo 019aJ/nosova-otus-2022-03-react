@@ -1,9 +1,9 @@
 import { parser } from "./parser";
 
 import {
-  firstPrioritiesCalc,
-  secondPrioritiesCalc,
-  thirdPrioritiesCalc,
+  clalulateFirstPriorities,
+  calculateSecondPriorities,
+  calculateThirdPriorities,
 } from "./engine";
 
 export const runner = (line: string): number => {
@@ -13,15 +13,15 @@ export const runner = (line: string): number => {
     throw new TypeError("Unexpected string");
   }
 
-  const firstPrioritiesRes = firstPrioritiesCalc(stack);
+  const firstPrioritiesRes = clalulateFirstPriorities(stack);
 
   if (firstPrioritiesRes.length === 1) {
     return Number(firstPrioritiesRes[0]);
   }
 
-  const secondPrioritiesRes = secondPrioritiesCalc(firstPrioritiesRes);
+  const secondPrioritiesRes = calculateSecondPriorities(firstPrioritiesRes);
   if (secondPrioritiesRes.length === 1) {
     return Number(secondPrioritiesRes[0]);
   }
-  return thirdPrioritiesCalc(secondPrioritiesRes);
+  return calculateThirdPriorities(secondPrioritiesRes);
 };

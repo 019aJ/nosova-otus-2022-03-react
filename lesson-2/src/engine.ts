@@ -9,7 +9,7 @@ import {
 
 const [FIRST, SECOND, THIRD] = mathPriorities;
 
-export const firstPrioritiesCalc = (stack: ParsedLineType): ParsedLineType =>
+export const clalulateFirstPriorities = (stack: ParsedLineType): ParsedLineType =>
   stack.reduce<ParsedLineType>((result, nextItem) => {
     // cos 0
     // но 2 **
@@ -48,7 +48,7 @@ export const firstPrioritiesCalc = (stack: ParsedLineType): ParsedLineType =>
     return result;
   }, []);
 
-export const secondPrioritiesCalc = (stack: ParsedLineType): ParsedLineType =>
+export const calculateSecondPriorities = (stack: ParsedLineType): ParsedLineType =>
   stack.reduce<ParsedLineType>((result, nextItem) => {
     const prevItem = result[result.length - 2];
     const item = result[result.length - 1];
@@ -68,7 +68,7 @@ export const secondPrioritiesCalc = (stack: ParsedLineType): ParsedLineType =>
     return result;
   }, []);
 
-export const thirdPrioritiesCalc = (stack: ParsedLineType): number =>
+export const calculateThirdPriorities = (stack: ParsedLineType): number =>
   stack.reduce<number>((result, nextItem, key) => {
     const item = stack[key - 1];
     const priority = mathOperatorsPriorities[item];
