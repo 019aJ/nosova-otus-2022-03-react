@@ -1,4 +1,3 @@
-import Cell from "../cell/Cell"
 import Field from "./Field"
 import { within, userEvent } from "@storybook/testing-library"
 export default {
@@ -23,7 +22,7 @@ export const With7Child = () => (
   </Field>
 )
 
-With7Child.play = async ({ canvasElement }) => {
+With7Child.play = async ({ canvasElement }: any) => {
   const canvas = within(canvasElement)
   const cells = canvas.getAllByText("click me")
   await userEvent.click(cells[0])

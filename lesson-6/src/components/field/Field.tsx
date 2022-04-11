@@ -14,6 +14,7 @@ interface FieldState {
   height: string
   selectedCell?: string | null
   cellCount: number
+  id: string
 }
 
 export default class Field extends Component<FieldProps, FieldState> {
@@ -25,6 +26,7 @@ export default class Field extends Component<FieldProps, FieldState> {
       height: props.height || "500px",
       selectedCell: null,
       cellCount: props.cellCount || 0,
+      id: Math.floor(Math.random() * 1000).toString()
     }
     this.renderChildren = this.renderChildren.bind(this)
     this.renderRow = this.renderRow.bind(this)
@@ -45,14 +47,22 @@ export default class Field extends Component<FieldProps, FieldState> {
     const title = this.state.title
     const cellCount = this.state.cellCount
     if (!cellCount) {
-      return <div style={this.ownStyle(width, height)}>{title}</div>
+      return (
+        <div key={this.state.id} style={this.ownStyle(width, height)}>
+          {title}
+        </div>
+      )
     } else {
       const elemInRow = Math.ceil(Math.sqrt(cellCount))
       const elemWidth = extractNum(width) / elemInRow
       const elemHeight = extractNum(height) / elemInRow
       const unit = extractUnits(width)
       return (
-        <div style={this.ownStyle(width, height)} onClick={this.onClick}>
+        <div
+          key={this.state.id}
+          style={this.ownStyle(width, height)}
+          onClick={this.onClick}
+        >
           {this.renderChildren(elemWidth, elemHeight, unit, elemInRow)}
         </div>
       )
@@ -82,6 +92,7 @@ export default class Field extends Component<FieldProps, FieldState> {
     for (let i = startIndex; i < startIndex + elemInRow && i < length; i++) {
       rows.push(
         <div
+          key={"row" + (startIndex + i)}
           style={{
             display: "inline-block",
           }}
@@ -116,5 +127,3 @@ export default class Field extends Component<FieldProps, FieldState> {
     }
   }
 }
-
-
