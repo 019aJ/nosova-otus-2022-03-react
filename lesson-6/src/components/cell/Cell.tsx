@@ -1,6 +1,6 @@
 import { Component } from "react"
 
-interface CellProps {
+export interface CellProps {
   title?: string
   width?: string
   height?: string
@@ -8,16 +8,16 @@ interface CellProps {
 }
 
 interface CellState {
-  title?: string
-  width?: string
-  height?: string
+  title: string
+  width: string
+  height: string
   id: string
 }
 export default class Cell extends Component<CellProps, CellState> {
   constructor(props: CellProps) {
     super(props)
     this.state = {
-      title: props.title || "0",
+      title: props.title || "Click me",
       width: props.width || "50px",
       height: props.height || "50px",
       id: props.id || Math.floor(Math.random() * 1000).toString(),
