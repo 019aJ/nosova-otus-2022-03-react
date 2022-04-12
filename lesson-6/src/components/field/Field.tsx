@@ -26,11 +26,10 @@ export default class Field extends Component<FieldProps, FieldState> {
       height: props.height || "500px",
       selectedCell: null,
       cellCount: props.cellCount || 0,
-      id: Math.floor(Math.random() * 1000).toString()
+      id: Math.floor(Math.random() * 1000).toString(),
     }
     this.renderChildren = this.renderChildren.bind(this)
     this.renderRow = this.renderRow.bind(this)
-    this.onClick = this.onClick.bind(this)
   }
 
   onClick = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -52,21 +51,20 @@ export default class Field extends Component<FieldProps, FieldState> {
           {title}
         </div>
       )
-    } else {
-      const elemInRow = Math.ceil(Math.sqrt(cellCount))
-      const elemWidth = extractNum(width) / elemInRow
-      const elemHeight = extractNum(height) / elemInRow
-      const unit = extractUnits(width)
-      return (
-        <div
-          key={this.state.id}
-          style={this.ownStyle(width, height)}
-          onClick={this.onClick}
-        >
-          {this.renderChildren(elemWidth, elemHeight, unit, elemInRow)}
-        </div>
-      )
     }
+    const elemInRow = Math.ceil(Math.sqrt(cellCount))
+    const elemWidth = extractNum(width) / elemInRow
+    const elemHeight = extractNum(height) / elemInRow
+    const unit = extractUnits(width)
+    return (
+      <div
+        key={this.state.id}
+        style={this.ownStyle(width, height)}
+        onClick={this.onClick}
+      >
+        {this.renderChildren(elemWidth, elemHeight, unit, elemInRow)}
+      </div>
+    )
   }
   renderCell(id: string, width: number, height: number, unit: string) {
     return (

@@ -8,18 +8,15 @@ export const Basic = () => <Field />
 export const Second = () => <Field title="My second tag" />
 
 export const WithTwoChild = () => (
-  <Field cellCount={2}>
-  </Field>
+  <Field cellCount={2}/>
 )
 
 export const WithFourChild = () => (
-  <Field cellCount={4} height="300px">
-  </Field>
+  <Field cellCount={4} height="300px"/>
 )
 
 export const With7Child = () => (
-  <Field cellCount={7}>
-  </Field>
+  <Field cellCount={7}/>
 )
 
 With7Child.play = async ({ canvasElement }: any) => {
