@@ -1,32 +1,31 @@
 import React, { Component } from "react"
 import Cell from "../cell/Cell"
 import { extractNum, extractUnits } from "../../utils/unitUtils"
+import { generateId } from "../../utils/idGenerator"
 interface FieldProps {
-  title?: string
-  width?: string
-  height?: string
-  cellCount?: number
-}
-
-interface FieldState {
   title: string
   width: string
   height: string
-  selectedCell?: string | null
   cellCount: number
+}
+
+interface FieldState {
+  selectedCell?: string | null
   id: string
 }
 
 export default class Field extends Component<FieldProps, FieldState> {
+  static defaultProps = {
+    title: "Field",
+    width: "500px",
+    height: "500px",
+    cellCount: 0,
+  }
   constructor(props: FieldProps) {
     super(props)
     this.state = {
-      title: props.title || "Field",
-      width: props.width || "500px",
-      height: props.height || "500px",
       selectedCell: null,
-      cellCount: props.cellCount || 0,
-      id: Math.floor(Math.random() * 1000).toString(),
+      id: generateId(),
     }
     this.renderChildren = this.renderChildren.bind(this)
     this.renderRow = this.renderRow.bind(this)
@@ -41,10 +40,10 @@ export default class Field extends Component<FieldProps, FieldState> {
   }
 
   render() {
-    const width = this.state.width
-    const height = this.state.height
-    const title = this.state.title
-    const cellCount = this.state.cellCount
+    const width = this.props.width
+    const height = this.props.height
+    const title = this.props.title
+    const cellCount = this.props.cellCount
     if (!cellCount) {
       return (
         <div key={this.state.id} style={this.ownStyle(width, height)}>
@@ -86,7 +85,7 @@ export default class Field extends Component<FieldProps, FieldState> {
     unit: string
   ) {
     const rows = []
-    const length = this.state.cellCount
+    const length = this.props.cellCount
     for (let i = startIndex; i < startIndex + elemInRow && i < length; i++) {
       rows.push(
         <div

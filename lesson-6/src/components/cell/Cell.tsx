@@ -1,36 +1,27 @@
 import { Component } from "react"
-
+import { generateId } from "../../utils/idGenerator"
 export interface CellProps {
-  title?: string
-  width?: string
-  height?: string
-  id?: string
-}
-
-interface CellState {
   title: string
   width: string
   height: string
-  id: string
+  id?: string
 }
-export default class Cell extends Component<CellProps, CellState> {
-  constructor(props: CellProps) {
-    super(props)
-    this.state = {
-      title: props.title || "Click me",
-      width: props.width || "50px",
-      height: props.height || "50px",
-      id: props.id || Math.floor(Math.random() * 1000).toString(),
-    }
+export default class Cell extends Component<CellProps> {
+  static defaultProps = {
+    title: "Click me",
+    width: "50px",
+    height: "50px",
+    id: generateId(),
   }
+
   render() {
     return (
       <div
-        id={this.state.id}
+        id={this.props.id}
         style={{
           backgroundColor: "pink",
-          width: this.state.width,
-          height: this.state.height,
+          width: this.props.width,
+          height: this.props.height,
           border: "solid 1px black",
         }}
       >
