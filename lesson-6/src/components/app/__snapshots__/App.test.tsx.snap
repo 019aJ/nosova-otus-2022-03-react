@@ -1,0 +1,211 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App snapshot tests base snapshot 1`] = `
+<div>
+  <div
+    class="App"
+  >
+    <div
+      style="background-color: yellow; width: 500px; height: 500px;"
+    >
+      Field
+    </div>
+  </div>
+</div>
+`;
+
+exports[`App snapshot tests some data snapshot 1`] = `
+<div>
+  <div
+    class="App"
+  >
+    <div
+      style="background-color: yellow; width: 500px; height: 500px;"
+    >
+      <div
+        style="white-space: nowrap;"
+      >
+        <div
+          style="display: inline-block;"
+        >
+          <div
+            id="1"
+            style="background-color: pink; width: 123px; height: 123px; border: 1px solid black;"
+          >
+            <div
+              style="text-align: center; position: relative; top: 30%;"
+            >
+              click me
+            </div>
+          </div>
+        </div>
+        <div
+          style="display: inline-block;"
+        >
+          <div
+            id="2"
+            style="background-color: pink; width: 123px; height: 123px; border: 1px solid black;"
+          >
+            <div
+              style="text-align: center; position: relative; top: 30%;"
+            >
+              click me
+            </div>
+          </div>
+        </div>
+        <div
+          style="display: inline-block;"
+        >
+          <div
+            id="3"
+            style="background-color: pink; width: 123px; height: 123px; border: 1px solid black;"
+          >
+            <div
+              style="text-align: center; position: relative; top: 30%;"
+            >
+              click me
+            </div>
+          </div>
+        </div>
+        <div
+          style="display: inline-block;"
+        >
+          <div
+            id="4"
+            style="background-color: pink; width: 123px; height: 123px; border: 1px solid black;"
+          >
+            <div
+              style="text-align: center; position: relative; top: 30%;"
+            >
+              click me
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        style="white-space: nowrap;"
+      >
+        <div
+          style="display: inline-block;"
+        >
+          <div
+            id="5"
+            style="background-color: pink; width: 123px; height: 123px; border: 1px solid black;"
+          >
+            <div
+              style="text-align: center; position: relative; top: 30%;"
+            >
+              click me
+            </div>
+          </div>
+        </div>
+        <div
+          style="display: inline-block;"
+        >
+          <div
+            id="6"
+            style="background-color: pink; width: 123px; height: 123px; border: 1px solid black;"
+          >
+            <div
+              style="text-align: center; position: relative; top: 30%;"
+            >
+              click me
+            </div>
+          </div>
+        </div>
+        <div
+          style="display: inline-block;"
+        >
+          <div
+            id="7"
+            style="background-color: pink; width: 123px; height: 123px; border: 1px solid black;"
+          >
+            <div
+              style="text-align: center; position: relative; top: 30%;"
+            >
+              click me
+            </div>
+          </div>
+        </div>
+        <div
+          style="display: inline-block;"
+        >
+          <div
+            id="8"
+            style="background-color: pink; width: 123px; height: 123px; border: 1px solid black;"
+          >
+            <div
+              style="text-align: center; position: relative; top: 30%;"
+            >
+              click me
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        style="white-space: nowrap;"
+      >
+        <div
+          style="display: inline-block;"
+        >
+          <div
+            id="9"
+            style="background-color: pink; width: 123px; height: 123px; border: 1px solid black;"
+          >
+            <div
+              style="text-align: center; position: relative; top: 30%;"
+            >
+              click me
+            </div>
+          </div>
+        </div>
+        <div
+          style="display: inline-block;"
+        >
+          <div
+            id="10"
+            style="background-color: pink; width: 123px; height: 123px; border: 1px solid black;"
+          >
+            <div
+              style="text-align: center; position: relative; top: 30%;"
+            >
+              click me
+            </div>
+          </div>
+        </div>
+        <div
+          style="display: inline-block;"
+        >
+          <div
+            id="11"
+            style="background-color: pink; width: 123px; height: 123px; border: 1px solid black;"
+          >
+            <div
+              style="text-align: center; position: relative; top: 30%;"
+            >
+              click me
+            </div>
+          </div>
+        </div>
+        <div
+          style="display: inline-block;"
+        >
+          <div
+            id="12"
+            style="background-color: pink; width: 123px; height: 123px; border: 1px solid black;"
+          >
+            <div
+              style="text-align: center; position: relative; top: 30%;"
+            >
+              click me
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        style="white-space: nowrap;"
+      />
+    </div>
+  </div>
+</div>
+`;
