@@ -6,6 +6,8 @@ jobs:
   codesandbox-comment:
     name: Add codesandbox link comment
     runs-on: ubuntu-latest
+    env:
+      working-directory: ./lesson-11
     steps:
       - uses: mshick/add-pr-comment@v1
         env:
