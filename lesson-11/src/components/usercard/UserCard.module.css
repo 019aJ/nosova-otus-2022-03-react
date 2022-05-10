@@ -1,0 +1,30 @@
+.userCard{
+    background-color: #d09bd1;
+    border: solid 1px black;
+    display: block;
+}
+
+.header{
+    text-align: center;
+    font-weight: bold; 
+}
+
+.detailButton{
+    width: 10px;
+    height: 10px;
+    float: right;
+    top: -30px;
+    right: 2px;
+    position: relative;
+}
+.detailButtonTodo {
+    width: 10px;
+    height: 10px;
+    float: right;
+    right: 2px;
+    position: relative;
+}
+.detailImage{
+    position: relative;
+    top: -8px;
+}
