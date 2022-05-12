@@ -12,6 +12,7 @@ jobs:
     # Job steps
     steps:
       - uses: actions/checkout@v1
+      workingDir: ./lesson-11
       - run: yarn
         #👇 Adds Chromatic as a step in the workflow
       - uses: chromaui/action@v1
