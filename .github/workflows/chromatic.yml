@@ -10,8 +10,6 @@ jobs:
     # Operating System
     runs-on: ubuntu-latest
     # Job steps
-    env:
-      working-directory: ./lesson-11
     steps:
       - uses: actions/checkout@v1
       - run: yarn
@@ -23,3 +21,6 @@ jobs:
           #👇 Chromatic projectToken, see https://storybook.js.org/tutorials/intro-to-storybook/react/en/deploy/ to obtain it
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           token: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          working-directory: ./lesson-11
+          LOG_LEVEL: 'debug'
