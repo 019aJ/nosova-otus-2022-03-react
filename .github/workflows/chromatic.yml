@@ -8,8 +8,7 @@ on: push
 jobs:
   test:
     # Operating System
-    runs-on: windows-2019
-    #runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
     # Job steps
     steps:
       - uses: actions/checkout@v1
