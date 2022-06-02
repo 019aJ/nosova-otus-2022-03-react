@@ -33,7 +33,10 @@ export const PlayProp = ({
   return (
     <Group title="Управление">
       <div className={styles.playPropContainer}>
-        <div className={`${styles.playProp} ${styles.playPropLabel}`}>
+        <div
+          data-testid="speed"
+          className={`${styles.playProp} ${styles.playPropLabel}`}
+        >
           Скорость:
         </div>
         <div className={`${styles.playProp} ${styles.speedStepper}`}>
@@ -44,6 +47,7 @@ export const PlayProp = ({
           ></Stepper>
         </div>
         <div
+          data-testid="run"
           className={
             isRunnung
               ? `${btnStyle} ${styles.play}`
@@ -52,6 +56,7 @@ export const PlayProp = ({
           onClick={onClickRunButton}
         ></div>
         <div
+          data-testid="restart"
           className={`${btnStyle} ${styles.reload}`}
           onClick={onClickRestartButton}
         ></div>

@@ -27,6 +27,14 @@ describe("render tests", () => {
     )
     expect(screen.getByText(GAME_TITLE)).toBeInTheDocument()
   })
+  it("has no cell", () => {
+    render(
+      <Provider store={store}>
+        <Field cellCount={0} />
+      </Provider>
+    )
+    expect(screen.queryByTestId("0")).toBeNull()
+  })
   it("has cell inside", () => {
     render(
       <Provider store={store}>

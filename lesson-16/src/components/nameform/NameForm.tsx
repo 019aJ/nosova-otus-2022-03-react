@@ -6,18 +6,23 @@ type NameFormProps = {
 }
 
 export const NameForm: React.FC<NameFormProps> = ({ onSubmit }) => (
-  <form >
+  <form
+    onSubmit={(e) => {
+      e.preventDefault()
+    }}
+  >
     <div className={styles.centerScreen}>
       <input type="text" placeholder="Введите имя" />
-      <input
+      <button
         type="submit"
-        value="Start"
         className={styles.submitButton}
         onClick={(e) => {
-          onSubmit()
           e.preventDefault()
+          onSubmit()
         }}
-      />
+      >
+        Start
+      </button>
     </div>
   </form>
 )

@@ -43,7 +43,7 @@ export const GamePanel: React.FC<GamePanelProps> = ({}) => {
     }
   })
   return (
-    <div>
+    <div style={{ width: FIELD_WIDTH }}>
       <PlayProp
         onRestart={() => {
           setRestart((prev) => !prev)

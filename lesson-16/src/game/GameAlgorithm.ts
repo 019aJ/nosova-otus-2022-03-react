@@ -14,7 +14,7 @@ export const initialize = (
   while (liveAmount > 0) {
     const random = generateRandom(freeCells.length)
     states[freeCells[random]] = true
-    freeCells.splice(0, 1)
+    freeCells.splice(random, 1)
     liveAmount--
   }
   return states

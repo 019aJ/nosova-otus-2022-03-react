@@ -9,4 +9,6 @@
 
 .submitButton{
   margin: 5px;
+  width: 100px;
+  height: 25px;
 }

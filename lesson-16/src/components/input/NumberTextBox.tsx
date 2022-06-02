@@ -1,13 +1,14 @@
 import { DetailedHTMLProps } from "react"
 import { useState } from "react"
 import { memo } from "react"
+import { isDigit } from "../../utils/utils"
 
 interface TextBoxProps
   extends DetailedHTMLProps<
     React.InputHTMLAttributes<HTMLInputElement>,
     HTMLInputElement
   > {
-  defaultValue?: number
+  defaultValue: number
   placeHolder: string
   onValueChange: (val: number) => void
 }
@@ -22,12 +23,15 @@ export const NumberTextBox = memo<TextBoxProps>(
         placeholder={placeHolder}
         className={className}
         onChange={(e) => {
-          const val = e.target.value ? parseInt(e.target.value) : 0
+          const val =
+            e.target.value && isDigit(e.target.value)
+              ? parseInt(e.target.value)
+              : 0
           setValue(val)
           onValueChange(val)
         }}
         onKeyPress={(event) => {
-          if (!/[0-9]/.test(event.key)) {
+          if (!isDigit(event.key)) {
             event.preventDefault()
           }
         }}
