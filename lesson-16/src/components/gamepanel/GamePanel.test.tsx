@@ -2,8 +2,7 @@ import { render, screen, act, fireEvent } from "@testing-library/react"
 import { GamePanel } from "./GamePanel"
 
 import "@testing-library/jest-dom"
-import { configureStore } from "@reduxjs/toolkit"
-import { Provider, useSelector } from "react-redux"
+import { Provider } from "react-redux"
 import { createStore, Store } from "redux"
 import { GameStateReducer } from "../../redux/store"
 

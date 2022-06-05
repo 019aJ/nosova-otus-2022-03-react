@@ -1,4 +1,4 @@
-import { act, render, screen } from "@testing-library/react"
+import { act, fireEvent, render, screen } from "@testing-library/react"
 import { App } from "./App"
 import "@testing-library/jest-dom"
 import { createStore, Store } from "redux"
@@ -17,7 +17,11 @@ describe("App render tests", () => {
       </Provider>
     )
     expect(screen.getByRole("textbox")).toBeInTheDocument()
-    const button = screen.getByRole("button")
+    const nameInput = screen.getByRole("textbox")
+    act(() => {
+      fireEvent.change(nameInput, { target: { value: "yourname" } })
+    })
+    const button = screen.getByTestId("nameButton")
     act(() => {
       button.dispatchEvent(new MouseEvent("click", { bubbles: true }))
     })

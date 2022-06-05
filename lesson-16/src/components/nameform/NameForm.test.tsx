@@ -11,9 +11,13 @@ describe("render tests", () => {
 describe("click tests", () => {
   it("submit called", () => {
     let x = false
-    render(<NameForm onSubmit={() => (x = true)} />)
+    render(<NameForm onSubmit={(value) => (x = true)} />)
+    const nameInput = screen.getByRole("textbox")
+    act(() => {
+      fireEvent.change(nameInput, { target: { value: "yourname" } })
+    })
 
-    const button = screen.getByRole("button")
+    const button = screen.getByTestId("nameButton")
     act(() => {
       button.dispatchEvent(new MouseEvent("click", { bubbles: true }))
     })
