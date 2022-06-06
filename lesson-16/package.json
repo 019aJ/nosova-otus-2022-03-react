@@ -2,6 +2,7 @@
   "name": "lesson-16",
   "version": "1.0.0",
   "description": "",
+  "homepage": "http://019aJ.github.io/gameoflive",
   "main": "index.js",
   "scripts": {
     "start": "webpack serve --config webpack.config.ts",
