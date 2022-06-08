@@ -1,7 +1,11 @@
-import { Configuration, DefinePlugin } from "webpack"
+import { Configuration } from "webpack"
 import HtmlWebpackPlugin from "html-webpack-plugin"
-const Dotenv = require("dotenv-webpack")
-
+import { DefinePlugin } from "webpack"
+/* eslint @typescript-eslint/no-var-requires: "off" */
+import dotenvlib from "dotenv"
+const dotenv = dotenvlib.config({
+  path: "./conf/.env",
+})
 const config: Configuration = {
   mode: "production",
   output: {
@@ -45,7 +49,9 @@ const config: Configuration = {
     new HtmlWebpackPlugin({
       template: "public/index.html",
     }),
-    new Dotenv(),
+    new DefinePlugin({
+      "process.env": JSON.stringify(dotenv.parsed),
+    }),
   ],
 }
 

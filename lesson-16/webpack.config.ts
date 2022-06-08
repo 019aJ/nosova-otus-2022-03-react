@@ -1,10 +1,14 @@
 import {
   Configuration as WebpackConfiguration,
   HotModuleReplacementPlugin,
+  DefinePlugin,
 } from "webpack"
 import { Configuration as WebpackDevServerConfiguration } from "webpack-dev-server"
 import HtmlWebpackPlugin from "html-webpack-plugin"
-const Dotenv = require("dotenv-webpack")
+import dotenvlib from "dotenv"
+const dotenv = dotenvlib.config({
+  path: "./conf/.env",
+})
 
 interface Configuration extends WebpackConfiguration {
   devServer?: WebpackDevServerConfiguration
@@ -54,7 +58,9 @@ const config: Configuration = {
       template: "public/index.html",
     }),
     new HotModuleReplacementPlugin(),
-    new Dotenv(),
+    new DefinePlugin({
+      "process.env": JSON.stringify(dotenv.parsed),
+    }),
   ],
   devtool: "inline-source-map",
   devServer: {
