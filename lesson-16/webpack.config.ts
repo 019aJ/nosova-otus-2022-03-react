@@ -4,6 +4,7 @@ import {
 } from "webpack"
 import { Configuration as WebpackDevServerConfiguration } from "webpack-dev-server"
 import HtmlWebpackPlugin from "html-webpack-plugin"
+const Dotenv = require("dotenv-webpack")
 
 interface Configuration extends WebpackConfiguration {
   devServer?: WebpackDevServerConfiguration
@@ -53,6 +54,7 @@ const config: Configuration = {
       template: "public/index.html",
     }),
     new HotModuleReplacementPlugin(),
+    new Dotenv(),
   ],
   devtool: "inline-source-map",
   devServer: {

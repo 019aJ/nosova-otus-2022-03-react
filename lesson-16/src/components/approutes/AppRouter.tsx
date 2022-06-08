@@ -7,13 +7,16 @@ interface AppProps {}
 
 export const AppRouter: React.FC<AppProps> = ({}) => {
   const { name, saveName } = useContext(AuthContext)
-
+  let defaultPath = name ? "/game" : "/login"
+  defaultPath = process.env.ROUTE_PATH
+    ? process.env.ROUTE_PATH + defaultPath
+    : defaultPath
   return name ? (
     <Routes>
       {privateRoutes.map((r) => (
         <Route key={r.path} path={r.path} element={<r.component />}></Route>
       ))}
-      <Route path="*" element={<Navigate to="/game" replace />} />
+      <Route path="*" element={<Navigate to={defaultPath} replace />} />
     </Routes>
   ) : (
     <Routes>
@@ -31,7 +34,7 @@ export const AppRouter: React.FC<AppProps> = ({}) => {
           }
         ></Route>
       ))}
-      <Route path="*" element={<Navigate to="/login" replace />} />
+      <Route path="*" element={<Navigate to={defaultPath} replace />} />
     </Routes>
   )
 }

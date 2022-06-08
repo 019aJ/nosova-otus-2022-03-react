@@ -1,15 +1,9 @@
-import {
-  Configuration as WebpackConfiguration,
-  HotModuleReplacementPlugin,
-} from "webpack"
-import { Configuration as WebpackDevServerConfiguration } from "webpack-dev-server"
+import { Configuration, DefinePlugin } from "webpack"
 import HtmlWebpackPlugin from "html-webpack-plugin"
+const Dotenv = require("dotenv-webpack")
 
-interface Configuration extends WebpackConfiguration {
-  devServer?: WebpackDevServerConfiguration
-}
 const config: Configuration = {
-  mode: "development",
+  mode: "production",
   output: {
     publicPath: "/nosova-otus-2022-03-react",
   },
@@ -51,16 +45,8 @@ const config: Configuration = {
     new HtmlWebpackPlugin({
       template: "public/index.html",
     }),
-    new HotModuleReplacementPlugin(),
+    new Dotenv(),
   ],
-  devtool: "inline-source-map",
-  devServer: {
-    historyApiFallback: true,
-    port: 3002,
-    open: true,
-    hot: true,
-    //disableHostCheck: true,
-  },
 }
 
 export default config
