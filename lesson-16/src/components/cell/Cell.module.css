@@ -4,14 +4,12 @@
 
 .cellAlive {
   background-color: pink;
-  -webkit-transition: background-color 300ms linear;
-  -ms-transition: background-color 3000ms linear;
+  transition: background-color 300ms linear;
   transition: background-color 300ms linear;
 }
 
 .cellDead {
   background-color: transparent;
-  -webkit-transition: background-color 300ms linear;
-  -ms-transition: background-color 300ms linear;
+  transition: background-color 300ms linear;
   transition: background-color 300ms linear;
 }
