@@ -1,5 +1,3 @@
-test("dummy test", () => undefined)
-
 import {
   getTopName,
   Team,
@@ -7,6 +5,8 @@ import {
   createQs,
   parseQs,
 } from "./ramdaPureFunctions"
+
+test("dummy test", () => undefined)
 
 
 test("getTopName", () => {

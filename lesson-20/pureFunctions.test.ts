@@ -1,5 +1,5 @@
-test("dummy test", () => undefined)
 import { getTopName, Team, QsObj, createQs, parseQs } from "./pureFunctions"
+test("dummy test", () => undefined)
 
 test("it works", () => expect(true).toBe(true))
 test("getTopName", () => {

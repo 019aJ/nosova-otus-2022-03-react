@@ -3,9 +3,9 @@ import {
   originalArrayToExpectedArray,
   originalTeamToExpectedTeamDeep,
 } from "./immutability"
-test("dummy test", () => undefined)
 
 import { OriginalTeam, ExpectedTeam } from "./immutability";
+test("dummy test", () => undefined)
 // Задание 1
 test("team to team", () => {
   const originalTeam: OriginalTeam = Object.freeze({
