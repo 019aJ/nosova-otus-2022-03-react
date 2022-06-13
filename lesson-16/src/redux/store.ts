@@ -2,8 +2,9 @@ import { configureStore } from "@reduxjs/toolkit"
 import { Reducer } from "redux"
 
 import { initialize, mutateCell, nextStep } from "../game/GameAlgorithm"
+export type ActionTypeNames = "INIT" | "MUTATE" | "NEXT_STEP"
 export type ActionType = {
-  type: "INIT" | "MUTATE" | "NEXT_STEP"
+  type: ActionTypeNames
   payload: {
     cellCount?: number
     percentage?: number

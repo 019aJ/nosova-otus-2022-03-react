@@ -1,6 +1,7 @@
 import { Cell } from "./Cell"
 import { act, render, screen } from "@testing-library/react"
 import "@testing-library/jest-dom"
+import "@testing-library/jest-dom/extend-expect" 
 describe("render tests", () => {
   it("Cell render alive works", async () => {
     render(<Cell alive height={10} width={10} onClick={() => {}} id="1" />)

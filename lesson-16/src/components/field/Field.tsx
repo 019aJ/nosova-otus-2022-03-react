@@ -1,4 +1,3 @@
-import { initialize } from "../../game/GameAlgorithm"
 import { Cell } from "../cell/Cell"
 import styles from "./Field.module.css"
 import {
@@ -8,6 +7,7 @@ import {
   FIELD_CELL_COUNT,
 } from "../../game/GameDefaults"
 import { useDispatch, useSelector } from "react-redux"
+import { createMutateAction } from "../../redux/actionCreator"
 interface FieldProps {
   title?: string
   width?: number
@@ -35,7 +35,7 @@ export const Field: React.FC<FieldProps> = ({
           width={width}
           height={height}
           onClick={() => {
-            dispatch({ type: "MUTATE", payload: { cellIndex: index } })
+            dispatch(createMutateAction(index))
           }}
         ></Cell>
       )

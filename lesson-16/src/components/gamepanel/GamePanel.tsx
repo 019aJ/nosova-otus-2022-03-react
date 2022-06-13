@@ -8,56 +8,83 @@ import {
   FILL_PERCENTAGE,
   SPEED,
 } from "../../game/GameDefaults"
-import { useState } from "react"
+import { useReducer, useState } from "react"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-interface GamePanelProps {}
+import {
+  createInitAction,
+  createNextStepAction,
+} from "../../redux/actionCreator"
+import {
+  GameState,
+  gameControlsReducer,
+  createSpeedState,
+  createHeightState,
+  createWidthState,
+  createRestartState,
+  createCellCountState,
+  createPercentageState,
+  createStartState,
+  createStopState,
+} from "../../redux/gameControlsReducer"
 
-export const GamePanel: React.FC<GamePanelProps> = ({}) => {
+const initialState: GameState = {
+  running: true,
+  restart: false,
+  speed: SPEED,
+  width: FIELD_WIDTH,
+  height: FIELD_HEIGHT,
+  cellCount: FIELD_CELL_COUNT,
+  percentage: FILL_PERCENTAGE,
+}
+
+export const GamePanel: React.FC = ({}) => {
   const dispatch = useDispatch()
   const gameState = useSelector<boolean[], boolean[]>((state) => state)
+  const [gameControlState, dispatchGameState] = useReducer(
+    gameControlsReducer,
+    initialState
+  )
+  const { running, restart, cellCount, percentage } = gameControlState
 
-  const [running, setRunning] = useState(true)
-  const [restart, setRestart] = useState(false)
-  const [speed, setSpeed] = useState(SPEED)
-
-  const [width, setWidth] = useState(FIELD_WIDTH)
-  const [height, setHeight] = useState(FIELD_HEIGHT)
-  const [cellCount, setCellCount] = useState(FIELD_CELL_COUNT)
-  const [percentage, setPercentage] = useState(FILL_PERCENTAGE)
   useEffect(() => {
     if (running && !gameState) {
-      dispatch({ type: "INIT", payload: { cellCount, percentage } })
+      dispatch(createInitAction(cellCount, percentage))
     }
   }, [running, gameState])
   useEffect(() => {
-    dispatch({ type: "INIT", payload: { cellCount, percentage } })
+    dispatch(createInitAction(cellCount, percentage))
   }, [restart, cellCount, percentage])
+
   useEffect(() => {
     if (running) {
       const timer = setTimeout(() => {
         const cellInRow = cellCount ? Math.ceil(Math.sqrt(cellCount)) : 0
-        dispatch({ type: "NEXT_STEP", payload: { cellInRow } })
-      }, 1000 / speed)
+        dispatch(createNextStepAction(cellInRow))
+      }, 1000 / gameControlState.speed)
       return () => clearTimeout(timer)
     }
   })
   return (
     <div style={{ width: FIELD_WIDTH }}>
       <PlayProp
-        onRestart={() => {
-          setRestart((prev) => !prev)
-        }}
-        onPlayChange={setRunning}
-        onSpeedChange={setSpeed}
+        onRestart={() => dispatchGameState(createRestartState(!restart))}
+        onPlayChange={(val) =>
+          dispatchGameState(val ? createStartState() : createStopState())
+        }
+        onSpeedChange={(s) => dispatchGameState(createSpeedState(s))}
       ></PlayProp>
       <FieldProp
-        onCellCountChange={setCellCount}
-        onHeightChange={setHeight}
-        onPercentageChange={setPercentage}
-        onWidthChange={setWidth}
+        onCellCountChange={(c) => dispatchGameState(createCellCountState(c))}
+        onHeightChange={(h) => dispatchGameState(createHeightState(h))}
+        onPercentageChange={(p) => dispatchGameState(createPercentageState(p))}
+        onWidthChange={(w) => dispatchGameState(createWidthState(w))}
       ></FieldProp>
-      <Field width={width} height={height} cellCount={cellCount} />
+      <Field
+        width={gameControlState.width}
+        height={gameControlState.height}
+        cellCount={cellCount}
+      />
     </div>
   )
 }
