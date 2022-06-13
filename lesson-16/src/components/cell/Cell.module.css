@@ -1,0 +1,15 @@
+.cell {
+  border: solid 1px black;
+}
+
+.cellAlive {
+  background-color: pink;
+  transition: background-color 300ms linear;
+  transition: background-color 300ms linear;
+}
+
+.cellDead {
+  background-color: transparent;
+  transition: background-color 300ms linear;
+  transition: background-color 300ms linear;
+}
