@@ -4,10 +4,9 @@ import {
   QsObj,
   createQs,
   parseQs,
-} from "./ramdaPureFunctions"
+} from "./ramdaPureFunctions";
 
-test("dummy test", () => undefined)
-
+test("dummy test", () => undefined);
 
 test("getTopName", () => {
   const teams: Team[] = [
@@ -15,9 +14,9 @@ test("getTopName", () => {
     { name: "Tigers", score: 4 },
     { name: "Bears", score: 6 },
     { name: "Monkeys", score: 2 },
-  ]
-  expect(getTopName(teams)).toBe("Bears")
-})
+  ];
+  expect(getTopName(teams)).toBe("Bears");
+});
 
 test("createQs", () => {
   const qsObj: QsObj = {
@@ -25,17 +24,17 @@ test("createQs", () => {
     pageSize: "10",
     total: "205",
     somethingElse: "value",
-  }
+  };
   expect(createQs(qsObj)).toBe(
     "?page=2&pageSize=10&total=205&somethingElse=value"
-  )
-})
+  );
+});
 test("parseQs", () => {
-  const qs = "?page=2&pageSize=10&total=205&somethingElse=value"
+  const qs = "?page=2&pageSize=10&total=205&somethingElse=value";
   expect(parseQs(qs)).toEqual({
     page: "2",
     pageSize: "10",
     total: "205",
     somethingElse: "value",
-  })
-})
+  });
+});

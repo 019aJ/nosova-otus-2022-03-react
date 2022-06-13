@@ -2,10 +2,10 @@ import {
   originalTeamToExpectedTeam,
   originalArrayToExpectedArray,
   originalTeamToExpectedTeamDeep,
-} from "./immutability"
+} from "./immutability";
 
 import { OriginalTeam, ExpectedTeam } from "./immutability";
-test("dummy test", () => undefined)
+test("dummy test", () => undefined);
 // Задание 1
 test("team to team", () => {
   const originalTeam: OriginalTeam = Object.freeze({
@@ -18,7 +18,7 @@ test("team to team", () => {
     league: "Minor",
     roster: 25,
   };
-  expect(originalTeamToExpectedTeam(originalTeam)).toStrictEqual(expectedTeam)
+  expect(originalTeamToExpectedTeam(originalTeam)).toStrictEqual(expectedTeam);
 });
 // Задание 2
 test("array to array", () => {
@@ -26,7 +26,7 @@ test("array to array", () => {
   const expectedArray = ["two", 3, 4, 5];
   expect(originalArrayToExpectedArray(originalArray)).toStrictEqual(
     expectedArray
-  )
+  );
 });
 // Задание 3
 test("team to team deep", () => {
@@ -44,5 +44,5 @@ test("team to team deep", () => {
       age: 28,
     },
   };
-  expect(originalTeamToExpectedTeamDeep(originalTeam)).toEqual(expectedTeam)
+  expect(originalTeamToExpectedTeamDeep(originalTeam)).toEqual(expectedTeam);
 });
