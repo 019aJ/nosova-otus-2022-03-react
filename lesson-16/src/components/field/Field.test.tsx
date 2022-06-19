@@ -11,7 +11,6 @@ import {  Store } from "redux"
 import appStore from "../../redux/store"
 
 import "@testing-library/jest-dom"
-import { configureStore } from "@reduxjs/toolkit"
 
 let store: Store
 

@@ -1,14 +1,14 @@
 import { Field } from "./Field"
 import appStore from "../../redux/store"
 import { ProviderWrapper } from "../providerwrapper/ProviderWrapper"
-import { createInitAction } from "../../redux/actionCreator"
+import { init } from "../../redux/flowSlice"
 export default {
   title: "Field",
   component: Field,
 }
 const store = appStore
 export const Basic = () => {
-  store.dispatch(createInitAction(100, 50))
+  store.dispatch(init({ cellCount: 100, percentage: 50 }))
   return (
     <ProviderWrapper store={store}>
       <Field />
@@ -16,7 +16,7 @@ export const Basic = () => {
   )
 }
 export const Second = () => {
-  store.dispatch(createInitAction(12, 50))
+  store.dispatch(init({ cellCount: 12, percentage: 50 }))
 
   return (
     <ProviderWrapper store={store}>
@@ -26,7 +26,7 @@ export const Second = () => {
 }
 
 export const WithTwoChild = () => {
-  store.dispatch(createInitAction(2, 50))
+  store.dispatch(init({ cellCount: 2, percentage: 50 }))
 
   return (
     <ProviderWrapper store={store}>
@@ -36,7 +36,7 @@ export const WithTwoChild = () => {
 }
 
 export const WithCustomSize = () => {
-  store.dispatch(createInitAction(100, 50))
+  store.dispatch(init({ cellCount: 100, percentage: 50 }))
   return (
     <ProviderWrapper store={store}>
       <Field cellCount={100} height={300} />
@@ -45,7 +45,7 @@ export const WithCustomSize = () => {
 }
 
 export const With7Child = () => {
-  store.dispatch(createInitAction(7, 50))
+  store.dispatch(init({ cellCount: 7, percentage: 50 }))
   return (
     <ProviderWrapper store={store}>
       <Field cellCount={7} />
@@ -54,7 +54,7 @@ export const With7Child = () => {
 }
 
 export const With30Percentage = () => {
-  store.dispatch(createInitAction(100, 30))
+  store.dispatch(init({ cellCount: 100, percentage: 30 }))
   return (
     <ProviderWrapper store={store}>
       <Field />
@@ -62,7 +62,7 @@ export const With30Percentage = () => {
   )
 }
 export const With0Percentage = () => {
-  store.dispatch(createInitAction(100, 0))
+  store.dispatch(init({ cellCount: 100, percentage: 0 }))
   return (
     <ProviderWrapper store={store}>
       <Field />
@@ -70,7 +70,7 @@ export const With0Percentage = () => {
   )
 }
 export const With100Percentage = () => {
-  store.dispatch(createInitAction(100, 100))
+  store.dispatch(init({ cellCount: 100, percentage: 100 }))
   return (
     <ProviderWrapper store={store}>
       <Field />
