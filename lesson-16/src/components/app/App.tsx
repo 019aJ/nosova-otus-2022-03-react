@@ -1,14 +1,28 @@
-import { GamePanel } from "../gamepanel/GamePanel"
-import { useState } from "react"
-import { NameForm } from "../nameform/NameForm"
+import { useEffect, useState } from "react"
+import { AuthContext } from "../../context"
+import { BrowserRouter } from "react-router-dom"
+import { AppRouter } from "../approutes/AppRouter"
+import { Navbar } from "../navbar/Navbar"
 
 interface AppProps {}
 
 export const App: React.FC<AppProps> = ({}) => {
-  const [isLogin, setIsLogin] = useState(false)
+  const [userName, setUserName] = useState<string | null>(null)
+
+  useEffect(() => {
+    setUserName(localStorage.getItem("auth"))
+  }, [])
   return (
-    <div>
-      {isLogin ? <GamePanel /> : <NameForm onSubmit={() => setIsLogin(true)} />}
-    </div>
+    <AuthContext.Provider
+      value={{
+        name: userName,
+        saveName: setUserName,
+      }}
+    >
+      <BrowserRouter>
+        <Navbar />
+        <AppRouter />
+      </BrowserRouter>
+    </AuthContext.Provider>
   )
 }
