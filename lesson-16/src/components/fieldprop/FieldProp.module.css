@@ -1,0 +1,8 @@
+.fieldPropElement {
+  display: inline-flex;
+  margin: 5px;
+}
+
+.fieldPropTextbox {
+  width: 30px;
+}
