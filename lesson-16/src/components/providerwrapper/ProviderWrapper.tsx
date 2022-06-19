@@ -1,10 +1,9 @@
 import { Store } from "@reduxjs/toolkit"
 import React from "react"
 import { Provider } from "react-redux"
-import { ActionType } from "../../redux/store"
 type ProviderWrapperProps = {
   children: React.ReactNode
-  store: Store<boolean[] | undefined, ActionType>
+  store: Store
 }
 export const ProviderWrapper: React.FC<ProviderWrapperProps> = ({
   children,

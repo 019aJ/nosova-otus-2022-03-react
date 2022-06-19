@@ -1,13 +1,12 @@
 import { Field } from "./Field"
-import { createStore } from "redux"
-import { GameStateReducer } from "../../redux/store"
+import appStore from "../../redux/store"
 import { ProviderWrapper } from "../providerwrapper/ProviderWrapper"
 import { createInitAction } from "../../redux/actionCreator"
 export default {
   title: "Field",
   component: Field,
 }
-const store = createStore(GameStateReducer)
+const store = appStore
 export const Basic = () => {
   store.dispatch(createInitAction(100, 50))
   return (

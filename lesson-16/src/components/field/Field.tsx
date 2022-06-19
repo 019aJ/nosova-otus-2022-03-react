@@ -7,7 +7,9 @@ import {
   FIELD_CELL_COUNT,
 } from "../../game/GameDefaults"
 import { useDispatch, useSelector } from "react-redux"
-import { createMutateAction } from "../../redux/actionCreator"
+import { FlowSliceState, mutate } from "../../redux/flowSlice"
+import { AppStateType, flowState } from "../../redux/store"
+
 interface FieldProps {
   title?: string
   width?: number
@@ -22,20 +24,20 @@ export const Field: React.FC<FieldProps> = ({
   cellCount,
 }) => {
   const renderChildren = (width: number, height: number, cellCount: number) => {
-    const values = useSelector<boolean[], boolean[]>((state) => state)
+    const { value } = useSelector<AppStateType, FlowSliceState>(flowState)
     const dispatch = useDispatch()
 
     const cards = []
-    for (let index = 0; index < cellCount; index++) {
+    for (let index = 0; value && index < cellCount; index++) {
       cards.push(
         <Cell
           key={index.toString()}
           id={index.toString()}
-          alive={values[index]}
+          alive={value[index]}
           width={width}
           height={height}
           onClick={() => {
-            dispatch(createMutateAction(index))
+            dispatch(mutate({ cellIndex: index }))
           }}
         ></Cell>
       )

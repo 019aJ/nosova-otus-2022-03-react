@@ -1,14 +1,14 @@
 import { act, fireEvent, render, screen } from "@testing-library/react"
 import { App } from "./App"
 import "@testing-library/jest-dom"
-import { createStore, Store } from "redux"
-import { GameStateReducer } from "../../redux/store"
+import { Store } from "redux"
+import appStore from "../../redux/store"
 import { Provider } from "react-redux"
 let store: Store
 
 describe("App render tests", () => {
   beforeEach(() => {
-    store = createStore(GameStateReducer)
+    store = appStore
   })
   it("render APP test", () => {
     render(

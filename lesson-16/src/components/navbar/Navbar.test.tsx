@@ -1,8 +1,7 @@
 import { Navbar } from "./Navbar"
-import { act, render, screen, fireEvent } from "@testing-library/react"
+import { act, render, screen } from "@testing-library/react"
 import "@testing-library/jest-dom"
 import { AuthContext } from "../../context"
-import { useContext } from "react"
 describe("render tests", () => {
   it("render username", () => {
     render(
@@ -48,7 +47,7 @@ describe("click tests", () => {
     )
 
     const button = screen.getByText("Выйти")
-    act(async () => {
+    act(() => {
       button.dispatchEvent(new MouseEvent("click", { bubbles: true }))
     })
   })

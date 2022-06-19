@@ -1,43 +1,19 @@
 import { configureStore } from "@reduxjs/toolkit"
-import { Reducer } from "redux"
+import FlowSliceReducer, { FlowSliceState } from "./flowSlice"
+import GameplaySliceReducer, { GameSliceState } from "./gameplaySlice"
 
-import { initialize, mutateCell, nextStep } from "../game/GameAlgorithm"
-export type ActionTypeNames = "INIT" | "MUTATE" | "NEXT_STEP"
-export type ActionType = {
-  type: ActionTypeNames
-  payload: {
-    cellCount?: number
-    percentage?: number
-    cellIndex?: number
-    cellInRow?: number
-  }
+export type AppStateType = {
+  gameplay: GameSliceState
+  flow: FlowSliceState
 }
 
-export const GameStateReducer: Reducer<boolean[] | undefined, ActionType> = (
-  state: boolean[] | undefined,
-  action: ActionType
-) => {
-  if (!state || state === undefined) {
-    return []
-  }
-  switch (action.type) {
-    case "INIT":
-      return action.payload.cellCount &&
-        (action.payload.percentage || action.payload.percentage === 0)
-        ? initialize(action.payload.cellCount, action.payload.percentage)
-        : state
-    case "MUTATE":
-      return action.payload.cellIndex || action.payload.cellIndex === 0
-        ? mutateCell(action.payload.cellIndex, state)
-        : state
-    case "NEXT_STEP":
-      return action.payload.cellInRow
-        ? nextStep(state, action.payload.cellInRow)
-        : state
-    default:
-      return state
-  }
-}
 export default configureStore({
-  reducer: GameStateReducer,
+  reducer: {
+    flow: FlowSliceReducer,
+    gameplay: GameplaySliceReducer,
+  },
 })
+
+export const gameplayState = (state: AppStateType) => state.gameplay
+
+export const flowState = (state: AppStateType) => state.flow

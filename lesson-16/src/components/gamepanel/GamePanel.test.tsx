@@ -2,15 +2,14 @@ import { render, screen, act, fireEvent } from "@testing-library/react"
 import { GamePanel } from "./GamePanel"
 
 import "@testing-library/jest-dom"
-import { configureStore } from "@reduxjs/toolkit"
-import { Provider, useSelector } from "react-redux"
-import { createStore, Store } from "redux"
-import { GameStateReducer } from "../../redux/store"
+import { Provider } from "react-redux"
+import { Store } from "redux"
+import appStore from "../../redux/store"
 
 let store: Store
 describe("render tests", () => {
   beforeEach(() => {
-    store = createStore(GameStateReducer)
+    store = appStore
   })
   it("render", () => {
     render(
@@ -33,7 +32,7 @@ describe("render tests", () => {
     act(() => {
       fireEvent.change(cellCount, { target: { value: "5" } })
     })
-    const values = store.getState()
+    const values = store.getState().flow.value
     expect(values.length).toBe(5)
   })
   it("state test percentage", () => {
@@ -49,14 +48,14 @@ describe("render tests", () => {
       fireEvent.change(percentage, { target: { value: "100" } })
       startButton.dispatchEvent(new MouseEvent("click", { bubbles: true }))
     })
-    let values: boolean[] = store.getState()
+    let values: boolean[] = store.getState().flow.value
     expect(values.reduce((x, y) => x && y)).toBe(true)
 
     act(() => {
       fireEvent.change(percentage, { target: { value: "0" } })
       startButton.dispatchEvent(new MouseEvent("click", { bubbles: true }))
     })
-    values = store.getState()
+    values = store.getState().flow.value
     expect(values.reduce((x, y) => x || y)).toBeFalsy()
   })
   it("after restart state changed", () => {
@@ -66,12 +65,16 @@ describe("render tests", () => {
       </Provider>
     )
     const restartButton = screen.getByTestId("restart")
-    const values: boolean[] = store.getState()
+    const values: boolean[] = store.getState().flow.value
+    const restartState: boolean = store.getState().gameplay.restart
     store.subscribe(() => {
-      const values2: boolean[] = store.getState()
-      expect(
-        values2.filter((x, index) => x !== values[index]).length
-      ).toBeGreaterThan(0)
+      const restartState2: boolean = store.getState().gameplay.restart
+      if (restartState2 === restartState) {
+        const values2: boolean[] = store.getState().flow.value
+        expect(
+          values2.filter((x, index) => x !== values[index]).length
+        ).toBeGreaterThan(0)
+      }
     })
     act(() => {
       restartButton.dispatchEvent(new MouseEvent("click", { bubbles: true }))
@@ -84,9 +87,9 @@ describe("render tests", () => {
       </Provider>
     )
     const runButton = screen.getByTestId("run")
-    const values: boolean[] = store.getState()
+    const values: boolean[] = store.getState().flow.value
     store.subscribe(() => {
-      const values2: boolean[] = store.getState()
+      const values2: boolean[] = store.getState().flow.value
       expect(values2.filter((x, index) => x !== values[index]).length).toBe(0)
     })
     act(() => {

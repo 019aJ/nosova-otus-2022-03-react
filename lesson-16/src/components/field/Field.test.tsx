@@ -7,8 +7,9 @@ import {
   FIELD_CELL_COUNT,
 } from "../../game/GameDefaults"
 import { Provider } from "react-redux"
-import { createStore, Store } from "redux"
-import { GameStateReducer } from "../../redux/store"
+import {  Store } from "redux"
+import appStore from "../../redux/store"
+
 import "@testing-library/jest-dom"
 import { configureStore } from "@reduxjs/toolkit"
 
@@ -16,8 +17,8 @@ let store: Store
 
 describe("render tests", () => {
   beforeEach(() => {
-    store = createStore(GameStateReducer)
-    configureStore({ reducer: GameStateReducer, preloadedState: [false] })
+    store = appStore
+    //configureStore({ reducer: GameStateReducer, preloadedState: [false] })
   })
   it("has title", () => {
     render(

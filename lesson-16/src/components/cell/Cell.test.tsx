@@ -3,12 +3,12 @@ import { act, render, screen } from "@testing-library/react"
 import "@testing-library/jest-dom"
 import "@testing-library/jest-dom/extend-expect" 
 describe("render tests", () => {
-  it("Cell render alive works", async () => {
+  it("Cell render alive works", () => {
     render(<Cell alive height={10} width={10} onClick={() => {}} id="1" />)
     expect(screen.getByTestId("1")).toBeInTheDocument()
     expect(screen.getByTestId("1")).toHaveClass("cellAlive")
   })
-  it("Cell render dead works", async () => {
+  it("Cell render dead works", () => {
     render(<Cell alive={false} height={10} width={10} onClick={() => {}} id="1" />)
     expect(screen.getByTestId("1")).toBeInTheDocument()
     expect(screen.getByTestId("1")).toHaveClass("cellDead")
