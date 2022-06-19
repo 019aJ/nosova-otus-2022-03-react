@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import React, { useEffect } from "react"
 import { useState } from "react"
 import { isDigit } from "../../utils/utils"
 import styles from "./Stepper.module.css"
@@ -22,19 +22,19 @@ export const Stepper = ({
       onValueChange(value)
     }
   }, [value])
+
+  const updateValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val =
+      e.target.value && isDigit(e.target.value) ? parseInt(e.target.value) : 0
+    setValue(val)
+  }
   return (
     <div className={styles.stepperContainer}>
       <div className={styles.stepperInput}>
         <input
           value={value}
           style={{ width: 30 }}
-          onChange={(e) => {
-            const val =
-              e.target.value && isDigit(e.target.value)
-                ? parseInt(e.target.value)
-                : 0
-            setValue(val)
-          }}
+          onChange={updateValue}
           onKeyPress={(event) => {
             if (!isDigit(event.key)) {
               event.preventDefault()
@@ -47,9 +47,7 @@ export const Stepper = ({
           data-testid={`up-${id}`}
           className={styles.stepperUp}
           onClick={() => {
-            setValue((prev) => {
-              return prev ? prev + step : startValue
-            })
+            setValue((prev) => (prev ? prev + step : startValue))
           }}
         ></div>
         <div
@@ -57,9 +55,9 @@ export const Stepper = ({
           className={styles.stepperDown}
           onClick={() => {
             /*Отрицательные числа не разрешаем*/
-            setValue((prev) => {
-              return prev ? (prev - step > 0 ? prev - step : prev) : startValue
-            })
+            setValue((prev) =>
+              prev ? (prev - step > 0 ? prev - step : prev) : startValue
+            )
           }}
         ></div>
       </div>
