@@ -1,0 +1,42 @@
+.playPropContainer {
+  height: 30px;
+}
+
+.speedStepper {
+  width: 50px;
+  height: 20px;
+}
+.playProp {
+  display: inline-flex;
+  margin-left: 5px;
+}
+
+.playPropLabel {
+  vertical-align: middle;
+}
+
+.playPropButton {
+  border-radius: 3px;
+  width: 30px;
+  height: 20px;
+  border: 1px solid rgb(192, 192, 192);
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.playPropButton:active {
+  background-color: #4d90fe;
+  background-image: linear-gradient(#4d90fe 0px, #357ae8 100%);
+}
+
+.stop {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAp0lEQVQ4jWNgQABxIFZgoCIwBuLPQFwJxGzUMnAeEOcD8VkgdqOGgTOhbCkgXgTEm4BYhhoGwoA3EJ9jgLiamRoGggAnEDcA8XEgtqCGgTCgAsTbGSBBIUwNA2HAF4gvAHEaEDNSw0AQ4AfiiUC8D4i1qWEgDBgA8SGo4TyDykCqeplqkaLKQKVkQ9WE7cNApawnzUClwgG5+HIl1yBkA6lawFKlCgAAJOIpG4sH3WUAAAAASUVORK5CYII=);
+}
+
+.play {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAAARElEQVQ4jWNgwAQxQDwLDctBMbp4DBb9GACkMBqIjaF4HQ52NFQtUQYaY+EboxmAzh81cNTAUQNHDRyOBlK1gKWoCgAAlC5HudCN/dIAAAAASUVORK5CYII=);
+}
+
+.reload {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAABNElEQVQ4ja2VSU7DQBBFS0wBzhBYcgGkECYHrsGQCyAQg5AC2bBHsCYMK66CgAViPAIHgfedAiJHbsW4S3pSy+X67arqcpvl2zAswT6cwxnswiIMBeL6rOKB79CBdUhgBZpwDR+wAyMec5snNg2P0IKJwKbjcAIPUIWnPLEXqA2WSGo1j/nMOiq+WxGxjnMHX1mnatYqICabzfBr6uabhWs2iM2YN2kZLkqKmWvoSNkBrEUQlMahFjq0SQTBxLXSCWhEEFyFUy1ipbxh3TFNC3kZQfAG6lpo0HVsJkuIKfbVen4aGvSjEoJt2Op9MAb3MPcPMaWp8RvNOqbguaBo3WOqeS9IVF96bOGaytf2L8sV+zGlv23dRqn7Og4NZxOu3Kea9aUZMnVsAfbs7wrQet4CV8A388wxLFzyt+EAAAAASUVORK5CYII=);
+}

@@ -1,0 +1,11 @@
+.navbar {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.navbarElements {
+    margin-left: 11px;
+}
