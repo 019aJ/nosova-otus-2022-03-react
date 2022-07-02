@@ -7,11 +7,10 @@ import { Navbar } from "../navbar/Navbar"
 interface AppProps {}
 
 export const App: React.FC<AppProps> = ({}) => {
-  const [userName, setUserName] = useState<string | null>(null)
+  const [userName, setUserName] = useState<string | null>(() =>
+    localStorage.getItem("auth")
+  )
 
-  useEffect(() => {
-    setUserName(localStorage.getItem("auth"))
-  }, [])
   return (
     <AuthContext.Provider
       value={{

@@ -3,9 +3,7 @@ import { AuthContext } from "../../context"
 import { privateRoutes, publicRoutes } from "../../routes"
 import { Navigate, Route, Routes } from "react-router-dom"
 
-interface AppProps {}
-
-export const AppRouter: React.FC<AppProps> = ({}) => {
+export const AppRouter: React.FC = ({}) => {
   const { name, saveName } = useContext(AuthContext)
   let defaultPath = name ? "/game" : "/login"
   defaultPath = process.env.ROUTE_PATH
