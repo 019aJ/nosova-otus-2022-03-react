@@ -1,8 +1,4 @@
-import {
-  Configuration as WebpackConfiguration,
-  HotModuleReplacementPlugin,
-  DefinePlugin,
-} from "webpack"
+import { Configuration as WebpackConfiguration, DefinePlugin } from "webpack"
 import { Configuration as WebpackDevServerConfiguration } from "webpack-dev-server"
 import HtmlWebpackPlugin from "html-webpack-plugin"
 import dotenvlib from "dotenv"
@@ -56,7 +52,6 @@ const config: Configuration = {
     new HtmlWebpackPlugin({
       template: "public/index.html",
     }),
-    new HotModuleReplacementPlugin(),
     new DefinePlugin({
       "process.env": JSON.stringify(dotenv.parsed),
     }),
@@ -67,7 +62,6 @@ const config: Configuration = {
     port: 3002,
     open: true,
     hot: true,
-    //disableHostCheck: true,
   },
 }
 

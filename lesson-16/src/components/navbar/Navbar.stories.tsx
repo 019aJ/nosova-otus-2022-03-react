@@ -1,4 +1,4 @@
-import {  useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { AuthContext } from "../../context"
 import { Navbar } from "./Navbar"
 export default {

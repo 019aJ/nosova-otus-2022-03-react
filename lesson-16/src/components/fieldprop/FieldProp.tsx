@@ -18,7 +18,7 @@ export const FieldProp = ({
   onWidthChange,
   onHeightChange,
   onCellCountChange,
-  onPercentageChange
+  onPercentageChange,
 }: FieldPropProps) => {
   const numberTextBoxClasses = `${styles.fieldPropElement} ${styles.fieldPropTextbox}`
 

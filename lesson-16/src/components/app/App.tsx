@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { AuthContext } from "../../context"
 import { BrowserRouter } from "react-router-dom"
 import { AppRouter } from "../approutes/AppRouter"

@@ -7,7 +7,7 @@ import {
   FIELD_CELL_COUNT,
 } from "../../game/GameDefaults"
 import { Provider } from "react-redux"
-import {  Store } from "redux"
+import { Store } from "redux"
 import appStore from "../../redux/store"
 
 import "@testing-library/jest-dom"

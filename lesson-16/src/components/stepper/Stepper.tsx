@@ -24,8 +24,7 @@ export const Stepper = ({
   }, [value])
 
   const updateValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const val =
-      e.target.value && isDigit(e.target.value) ? parseInt(e.target.value) : 0
+    const val = isDigit(e.target.value) ? parseInt(e.target.value) : 0
     setValue(val)
   }
   return (

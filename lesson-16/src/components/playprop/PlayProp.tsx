@@ -3,9 +3,7 @@ import { useState } from "react"
 import { Group } from "../group/Group"
 import { Stepper } from "../stepper/Stepper"
 import styles from "./PlayProp.module.css"
-import {
-  SPEED
-} from "../../game/GameDefaults"
+import { SPEED } from "../../game/GameDefaults"
 type PlayPropProps = {
   onPlayChange: (val: boolean) => void
   onRestart: () => void
@@ -17,7 +15,6 @@ export const PlayProp = ({
   onRestart,
   onSpeedChange,
 }: PlayPropProps) => {
-
   const [isRunnung, setIsRunnung] = useState(true)
   const onClickRunButton = () => {
     setIsRunnung((prev) => !prev)

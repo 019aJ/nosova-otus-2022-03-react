@@ -9,8 +9,11 @@
     "test": "jest",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
+    "pretty": "prettier --write \"src/**/*.ts\" \"src/**/*.tsx\"",
     "lint": "eslint . --ext .ts",
-    "lint-fix": "eslint . --fix --ext .ts"
+    "lint-fix": "eslint . --fix --ext .ts",
+    "prepare": "cd .. && husky install lesson-16/.husky",
+    "precommit": "npm run lint-fix && npm run pretty"
   },
   "author": "",
   "license": "ISC",
@@ -22,8 +25,7 @@
     "react-redux": "^8.0.2",
     "react-router-dom": "^6.3.0",
     "redux": "^4.2.0",
-    "redux-saga": "^1.1.3",
-    "style-loader": "^3.3.1"
+    "redux-saga": "^1.1.3"
   },
   "devDependencies": {
     "@babel/core": "^7.18.0",
@@ -58,12 +60,14 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
     "html-webpack-plugin": "^5.5.0",
+    "husky": "^8.0.1",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^28.1.0",
     "jest-environment-jsdom": "^28.1.0",
     "jest-watch-typeahead": "^1.1.0",
     "prettier": "^2.6.2",
     "redux-saga-test-plan": "^4.0.5",
+    "style-loader": "^3.3.1",
     "ts-node": "^10.8.0",
     "typescript": "^4.6.4",
     "typescript-plugin-css-modules": "^3.4.0",

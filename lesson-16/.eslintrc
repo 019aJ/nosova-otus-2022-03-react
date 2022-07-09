@@ -24,7 +24,7 @@
      "overrides": [
         {
       "files": [
-                "**/*.test.js"
+                "**/*.test.tsx"
             ],
       "env": {
         "jest": true

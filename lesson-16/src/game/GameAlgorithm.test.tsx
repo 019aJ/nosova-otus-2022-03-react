@@ -1,8 +1,4 @@
-import {
-  initialize,
-  mutateCell,
-  nextStepForCell,
-} from "./GameAlgorithm"
+import { initialize, mutateCell, nextStepForCell } from "./GameAlgorithm"
 describe("init tests", () => {
   test.each([
     { cellCount: 100, percentage: 100, expected: 100 },

@@ -1,7 +1,7 @@
 import { Cell } from "./Cell"
 import { act, render, screen } from "@testing-library/react"
 import "@testing-library/jest-dom"
-import "@testing-library/jest-dom/extend-expect" 
+import "@testing-library/jest-dom/extend-expect"
 describe("render tests", () => {
   it("Cell render alive works", () => {
     render(<Cell alive height={10} width={10} onClick={() => {}} id="1" />)
@@ -9,13 +9,25 @@ describe("render tests", () => {
     expect(screen.getByTestId("1")).toHaveClass("cellAlive")
   })
   it("Cell render dead works", () => {
-    render(<Cell alive={false} height={10} width={10} onClick={() => {}} id="1" />)
+    render(
+      <Cell alive={false} height={10} width={10} onClick={() => {}} id="1" />
+    )
     expect(screen.getByTestId("1")).toBeInTheDocument()
     expect(screen.getByTestId("1")).toHaveClass("cellDead")
   })
   it("click test", () => {
     let x = false
-    render(<Cell alive height={10} width={10} onClick={() => {x = true}} id="1" />)
+    render(
+      <Cell
+        alive
+        height={10}
+        width={10}
+        onClick={() => {
+          x = true
+        }}
+        id="1"
+      />
+    )
     const cell = screen.getByTestId("1")
     act(() => {
       cell.dispatchEvent(new MouseEvent("click", { bubbles: true }))

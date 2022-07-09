@@ -1,9 +1,7 @@
 import { Field } from "../field/Field"
 import { PlayProp } from "../playprop/PlayProp"
 import { FieldProp } from "../fieldprop/FieldProp"
-import {
-  FIELD_WIDTH
-} from "../../game/GameDefaults"
+import { FIELD_WIDTH } from "../../game/GameDefaults"
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { FlowSliceState, init, nextState } from "../../redux/flowSlice"

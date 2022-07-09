@@ -10,7 +10,6 @@ export const Basic = () => (
     onValueChange={(value) => {
       console.log(value)
     }}
-    placeHolder='text'
+    placeHolder="text"
   />
 )
-

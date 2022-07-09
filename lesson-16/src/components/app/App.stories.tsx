@@ -1,6 +1,6 @@
 import { App } from "../app/App"
 import { ProviderWrapper } from "../providerwrapper/ProviderWrapper"
-import  appStore  from "../../redux/store"
+import appStore from "../../redux/store"
 
 export default {
   title: "App",

@@ -17,7 +17,6 @@ export const Cell: React.FC<CellProps> = ({
   const classes = `${styles.cell} ${alive ? styles.cellAlive : styles.cellDead}`
   return (
     <div
-      
       id={id}
       className={classes}
       style={{

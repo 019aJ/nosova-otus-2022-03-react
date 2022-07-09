@@ -23,10 +23,7 @@ export const NumberTextBox = memo<TextBoxProps>(
         placeholder={placeHolder}
         className={className}
         onChange={(e) => {
-          const val =
-            e.target.value && isDigit(e.target.value)
-              ? parseInt(e.target.value)
-              : 0
+          const val = isDigit(e.target.value) ? parseInt(e.target.value) : 0
           setValue(val)
           onValueChange(val)
         }}
