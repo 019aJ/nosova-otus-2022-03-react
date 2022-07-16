@@ -20,7 +20,9 @@ export const onInit = (state: FlowSliceState, action: ActionType) => {
 }
 export const onMutate = (state: FlowSliceState, action: ActionType) => {
   state.value =
-    state.value && (action.payload.cellIndex || action.payload.cellIndex === 0)
+    state.value &&
+    ((action.payload.cellIndex && action.payload.cellIndex > 0) ||
+      action.payload.cellIndex === 0)
       ? mutateCell(action.payload.cellIndex, state.value)
       : state.value
 }
@@ -47,7 +49,6 @@ export const flowSlice = createSlice({
     updateFinished: onUpdateFinished,
   },
 })
-
 export const { init, mutate, nextState, updateFinished } = flowSlice.actions
 
 export default flowSlice.reducer

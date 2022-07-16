@@ -16,6 +16,18 @@ describe("render tests", () => {
     expect(screen.getByTestId("speed")).toBeInTheDocument()
     expect(screen.getByTestId("run")).toBeInTheDocument()
     expect(screen.getByTestId("restart")).toBeInTheDocument()
+    expect(screen.getByTestId("run").className).toMatch(
+      "playProp playPropButton play"
+    )
+    expect(screen.getByTestId("restart").className).toMatch(
+      "playProp playPropButton reload"
+    )
+    expect(screen.getByTestId("speeddiv").className).toMatch(
+      "playProp speedStepper"
+    )
+    expect(screen.getByTestId("speedtitle").className).toMatch(
+      "playProp playPropLabel"
+    )
   })
   it("input", () => {
     let speed = 0

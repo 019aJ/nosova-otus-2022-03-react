@@ -1,7 +1,13 @@
+import { generateRandom } from "../utils/utils"
+
 export const initialize = (
   cellCount: number,
   percentage: number
 ): boolean[] => {
+  if (!cellCount || cellCount < 0) {
+    return []
+  }
+
   let liveAmount = (cellCount * percentage) / 100
   const states: boolean[] = new Array(cellCount)
   if (liveAmount === cellCount) {
@@ -38,55 +44,39 @@ export const nextStepForCell = (
     return states[0]
   }
   let aliveNeighbourCount = 0
-  switch (cellIndex) {
+
+  const remainder = cellIndex % cellInRow
+  switch (remainder) {
     case 0:
-      aliveNeighbourCount =
-        getValue(states, cellIndex + 1) +
-        getValue(states, cellIndex + cellInRow) +
-        getValue(states, cellIndex + cellInRow + 1)
+      aliveNeighbourCount = sumNeighbours(states, [
+        cellIndex + 1,
+        cellIndex + cellInRow,
+        cellIndex + cellInRow + 1,
+        cellIndex - cellInRow,
+        cellIndex - cellInRow + 1,
+      ])
       break
     case cellInRow - 1:
-      aliveNeighbourCount =
-        getValue(states, cellIndex - 1) +
-        getValue(states, cellIndex + cellInRow) +
-        getValue(states, cellIndex + cellInRow - 1)
+      aliveNeighbourCount = sumNeighbours(states, [
+        cellIndex - 1,
+        cellIndex + cellInRow,
+        cellIndex + cellInRow - 1,
+        cellIndex - cellInRow,
+        cellIndex - cellInRow - 1,
+      ])
       break
-    default: {
-      const remainder = cellIndex % cellInRow
-      switch (remainder) {
-        case 0:
-          aliveNeighbourCount = sumNeighbours(states, [
-            cellIndex + 1,
-            cellIndex + cellInRow,
-            cellIndex + cellInRow + 1,
-            cellIndex - cellInRow,
-            cellIndex - cellInRow + 1,
-          ])
-          break
-        case cellInRow - 1:
-          aliveNeighbourCount = sumNeighbours(states, [
-            cellIndex - 1,
-            cellIndex + cellInRow,
-            cellIndex + cellInRow - 1,
-            cellIndex - cellInRow,
-            cellIndex - cellInRow - 1,
-          ])
-          break
-        default:
-          aliveNeighbourCount = sumNeighbours(states, [
-            cellIndex - 1,
-            cellIndex + 1,
-            cellIndex + cellInRow,
-            cellIndex + cellInRow - 1,
-            cellIndex + cellInRow + 1,
-            cellIndex - cellInRow,
-            cellIndex - cellInRow - 1,
-            cellIndex - cellInRow + 1,
-          ])
-          break
-      }
+    default:
+      aliveNeighbourCount = sumNeighbours(states, [
+        cellIndex - 1,
+        cellIndex + 1,
+        cellIndex + cellInRow,
+        cellIndex + cellInRow - 1,
+        cellIndex + cellInRow + 1,
+        cellIndex - cellInRow,
+        cellIndex - cellInRow - 1,
+        cellIndex - cellInRow + 1,
+      ])
       break
-    }
   }
   const currentState = states[cellIndex]
 
@@ -104,11 +94,5 @@ const sumNeighbours = (states: boolean[], cellIndexes: number[]) => {
 }
 
 const getValue = (states: boolean[], cellIndex: number) => {
-  const boolValue =
-    cellIndex > 0 && cellIndex < states.length ? states[cellIndex] : false
-  return boolValue ? 1 : 0
-}
-
-const generateRandom = (maxLimit: number): number => {
-  return Math.floor(Math.random() * maxLimit)
+  return states[cellIndex] ? 1 : 0
 }

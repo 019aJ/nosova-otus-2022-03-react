@@ -14,7 +14,7 @@ export const NameForm: React.FC<NameFormProps> = ({ onSubmit }) => {
         onSubmit(
           e.currentTarget.username
             ? e.currentTarget.username.value
-            : nameInput?.current?.value
+            : nameInput.current?.value
         )
         e.preventDefault()
       }}

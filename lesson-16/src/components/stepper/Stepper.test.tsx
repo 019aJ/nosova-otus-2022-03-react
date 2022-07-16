@@ -5,6 +5,8 @@ describe("render tests Stepper", () => {
   it("render", () => {
     render(<Stepper startValue={1} onValueChange={() => {}} step={1} />)
     expect(screen.getByRole("textbox")).toBeInTheDocument()
+
+    expect(screen.getByTestId("speed").style.width).toMatch("30")
   })
 })
 
@@ -63,5 +65,28 @@ describe("change Stepper value tests", () => {
     })
     /**дефолтное = 1 + step = 2 */
     expect(x).toBe(3)
+  })
+
+  it("test decrease to 0", () => {
+    let x = 5
+    render(
+      <Stepper
+        onValueChange={(value) => {
+          x = value
+        }}
+        step={1}
+        id="1"
+        startValue={2}
+      />
+    )
+
+    const btnDown = screen.getByTestId("down-1")
+    act(() => {
+      btnDown.dispatchEvent(new MouseEvent("click", { bubbles: true }))
+    })
+    act(() => {
+      btnDown.dispatchEvent(new MouseEvent("click", { bubbles: true }))
+    })
+    expect(x).toBe(1)
   })
 })

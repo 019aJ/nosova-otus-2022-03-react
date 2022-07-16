@@ -27,11 +27,6 @@ export const NumberTextBox = memo<TextBoxProps>(
           setValue(val)
           onValueChange(val)
         }}
-        onKeyPress={(event) => {
-          if (!isDigit(event.key)) {
-            event.preventDefault()
-          }
-        }}
       ></input>
     )
   }

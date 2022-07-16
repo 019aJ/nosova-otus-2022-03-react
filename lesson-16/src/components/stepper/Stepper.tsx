@@ -24,21 +24,16 @@ export const Stepper = ({
   }, [value])
 
   const updateValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const val = isDigit(e.target.value) ? parseInt(e.target.value) : 0
-    setValue(val)
+    setValue(isDigit(e.target.value) ? parseInt(e.target.value) : 0)
   }
   return (
     <div className={styles.stepperContainer}>
       <div className={styles.stepperInput}>
         <input
+          data-testid="speed"
           value={value}
           style={{ width: 30 }}
           onChange={updateValue}
-          onKeyPress={(event) => {
-            if (!isDigit(event.key)) {
-              event.preventDefault()
-            }
-          }}
         ></input>
       </div>
       <div className={styles.stepper}>
@@ -54,9 +49,7 @@ export const Stepper = ({
           className={styles.stepperDown}
           onClick={() => {
             /*Отрицательные числа не разрешаем*/
-            setValue((prev) =>
-              prev ? (prev - step > 0 ? prev - step : prev) : startValue
-            )
+            setValue((prev) => (prev ? prev - step : startValue))
           }}
         ></div>
       </div>

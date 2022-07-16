@@ -9,7 +9,7 @@ export const Navbar = () => {
     localStorage.removeItem("auth")
   }
   return name ? (
-    <div style={{ width: FIELD_WIDTH }}>
+    <div data-testid={"navbar"} style={{ width: FIELD_WIDTH }}>
       <div className={styles.navbar}>
         <div className={styles.navbarElements}>
           Текущий пользователь: {name}

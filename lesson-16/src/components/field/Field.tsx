@@ -9,6 +9,7 @@ import {
 import { useDispatch, useSelector } from "react-redux"
 import { FlowSliceState, mutate } from "../../redux/flowSlice"
 import { AppStateType, flowState } from "../../redux/store"
+import { calcFieldAndCellSize } from "../../utils/utils"
 
 interface FieldProps {
   title?: string
@@ -45,28 +46,22 @@ export const Field: React.FC<FieldProps> = ({
     return cards
   }
 
-  const elemInRow = cellCount ? Math.ceil(Math.sqrt(cellCount)) : 0
-  const elemWidth = cellCount && width ? width / elemInRow : 0
-  const elemHeight = cellCount && height ? height / elemInRow : 0
-  width = elemInRow > 0 ? elemInRow * elemWidth : width
-  height =
-    cellCount && elemInRow > 0
-      ? Math.ceil(cellCount / elemInRow) * elemHeight
-      : height
+  const { fieldWidth, filedHeight, cellWidth, cellHeight } =
+    // @ts-expect-error: cant be undefined - Default value
+    calcFieldAndCellSize(cellCount, width, height)
   return (
     <div key="fld2">
       <div className={styles.header}>{title}</div>
       <div
+        data-testid={"fld"}
         key="fld"
         className={styles.field}
         style={{
-          width,
-          height,
+          width: fieldWidth,
+          height: filedHeight,
         }}
       >
-        {cellCount
-          ? renderChildren(elemWidth - 2, elemHeight - 2, cellCount)
-          : ""}
+        {cellCount ? renderChildren(cellWidth, cellHeight, cellCount) : ""}
       </div>
     </div>
   )

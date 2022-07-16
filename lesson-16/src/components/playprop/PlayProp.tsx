@@ -31,12 +31,15 @@ export const PlayProp = ({
     <Group title="Управление">
       <div className={styles.playPropContainer}>
         <div
-          data-testid="speed"
+          data-testid="speedtitle"
           className={`${styles.playProp} ${styles.playPropLabel}`}
         >
           Скорость:
         </div>
-        <div className={`${styles.playProp} ${styles.speedStepper}`}>
+        <div
+          data-testid="speeddiv"
+          className={`${styles.playProp} ${styles.speedStepper}`}
+        >
           <Stepper
             step={1}
             startValue={SPEED}

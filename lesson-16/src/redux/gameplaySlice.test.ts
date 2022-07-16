@@ -7,6 +7,7 @@ import gameplaySlice, {
   fieldHeight,
   gameCellCount,
   fillPercentage,
+  updateFinished,
 } from "./gameplaySlice"
 import {
   FIELD_WIDTH,
@@ -15,6 +16,9 @@ import {
   FILL_PERCENTAGE,
   SPEED,
 } from "../game/GameDefaults"
+
+const setItem = jest.spyOn(Object.getPrototypeOf(localStorage), "setItem")
+
 /**Описывается состояние поля игры*/
 describe("flowSlice states tests", () => {
   it("initial state test", () => {
@@ -60,5 +64,13 @@ describe("flowSlice states tests", () => {
     expect(
       gameplaySlice(undefined, fillPercentage({ value: 10 })).percentage
     ).toEqual(10)
+  })
+
+  it("'updateFinished' state test", () => {
+    gameplaySlice(undefined, updateFinished())
+    expect(setItem).toBeCalledWith(
+      "gameplayState",
+      '{"running":true,"restart":false,"speed":1,"width":570,"height":570,"cellCount":1024,"percentage":50}'
+    )
   })
 })

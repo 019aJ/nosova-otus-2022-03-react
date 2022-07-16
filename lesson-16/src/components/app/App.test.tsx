@@ -5,6 +5,7 @@ import { Store } from "redux"
 import appStore from "../../redux/store"
 import { Provider } from "react-redux"
 let store: Store
+const getItem = jest.spyOn(Object.getPrototypeOf(localStorage), "getItem")
 
 describe("App render tests", () => {
   beforeEach(() => {
@@ -26,5 +27,6 @@ describe("App render tests", () => {
       button.dispatchEvent(new MouseEvent("click", { bubbles: true }))
     })
     expect(screen.getByTestId("run")).toBeInTheDocument()
+    expect(getItem).toBeCalledWith("auth")
   })
 })

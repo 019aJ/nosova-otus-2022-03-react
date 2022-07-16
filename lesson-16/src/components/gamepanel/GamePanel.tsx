@@ -20,16 +20,9 @@ import { AppStateType, flowState, gameplayState } from "../../redux/store"
 
 export const GamePanel: React.FC = ({}) => {
   const dispatch = useDispatch()
-  const gameState = useSelector<AppStateType, FlowSliceState>(flowState)
-
   const { running, restart, cellCount, percentage, speed, width, height } =
     useSelector<AppStateType, GameSliceState>(gameplayState)
 
-  useEffect(() => {
-    if (running && !gameState) {
-      dispatch(init({ cellCount, percentage }))
-    }
-  }, [running, gameState])
   useEffect(() => {
     dispatch(init({ cellCount, percentage }))
   }, [restart, cellCount, percentage])
@@ -44,7 +37,7 @@ export const GamePanel: React.FC = ({}) => {
     }
   })
   return (
-    <div style={{ width: FIELD_WIDTH }}>
+    <div data-testid="gamePanel" style={{ width: FIELD_WIDTH }}>
       <PlayProp
         onRestart={() => dispatch(restartGame())}
         onPlayChange={(val) => dispatch(val ? startGame() : stopGame())}
