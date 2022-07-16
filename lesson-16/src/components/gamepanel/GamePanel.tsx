@@ -22,6 +22,13 @@ export const GamePanel: React.FC = ({}) => {
   const dispatch = useDispatch()
   const { running, restart, cellCount, percentage, speed, width, height } =
     useSelector<AppStateType, GameSliceState>(gameplayState)
+  const gameState = useSelector<AppStateType, FlowSliceState>(flowState)
+
+  useEffect(() => {
+    if (running && !gameState) {
+      dispatch(init({ cellCount, percentage }))
+    }
+  }, [running, gameState])
 
   useEffect(() => {
     dispatch(init({ cellCount, percentage }))
