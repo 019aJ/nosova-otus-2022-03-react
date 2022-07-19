@@ -98,8 +98,6 @@ describe("gameplay state tests", () => {
     act(() => {
       fireEvent.change(percentage, { target: { value: "10" } })
     })
-    screen.debug()
-
     const cellCount = screen.getByPlaceholderText("Число ячеек")
     act(() => {
       fireEvent.change(cellCount, { target: { value: "10" } })

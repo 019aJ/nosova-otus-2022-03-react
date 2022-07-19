@@ -13,7 +13,6 @@ describe("render tests", () => {
         onWidthChange={() => {}}
       />
     )
-    screen.debug()
     expect(screen.getByPlaceholderText("Ширина")).toBeInTheDocument()
     expect(screen.getByPlaceholderText("Высота")).toBeInTheDocument()
     expect(screen.getByPlaceholderText("Число ячеек")).toBeInTheDocument()
