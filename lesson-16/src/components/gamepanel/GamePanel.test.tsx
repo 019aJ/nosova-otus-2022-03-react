@@ -186,12 +186,15 @@ describe("game run tests", () => {
       </Provider>
     )
     const speed = screen.getByTestId("speed")
-
+    jest.useFakeTimers()
     act(() => {
       fireEvent.change(speed, { target: { value: 10 } })
     })
     const values: boolean[] = store.getState().flow.value
-    await new Promise((r) => setTimeout(r, 200))
+
+    act(() => {
+      jest.advanceTimersByTime(1000)
+    })
     const newValues: boolean[] = store.getState().flow.value
     expect(
       newValues.filter((x, index) => x !== values[index]).length
@@ -203,6 +206,7 @@ describe("game run tests", () => {
         <GamePanel />
       </Provider>
     )
+    jest.useFakeTimers()
     const speed = screen.getByTestId("speed")
     act(() => {
       fireEvent.change(speed, { target: { value: 10 } })
@@ -212,7 +216,9 @@ describe("game run tests", () => {
       runButton.dispatchEvent(new MouseEvent("click", { bubbles: true }))
     })
     const values: boolean[] = store.getState().flow.value
-    await new Promise((r) => setTimeout(r, 200))
+    act(() => {
+      jest.advanceTimersByTime(1000)
+    })
     const newValues: boolean[] = store.getState().flow.value
     expect(newValues.filter((x, index) => x !== values[index]).length).toBe(0)
   })

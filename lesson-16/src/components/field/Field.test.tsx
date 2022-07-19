@@ -160,8 +160,9 @@ describe("render tests", () => {
       </Provider>
     )
     const cell = screen.getByTestId("0")
-    store.dispatch(init({ cellCount: 1, percentage: 0 }))
-
+    act(() => {
+      store.dispatch(init({ cellCount: 1, percentage: 0 }))
+    })
     expect(screen.getByTestId("0")).toHaveClass("cellDead")
     act(() => {
       cell.dispatchEvent(new MouseEvent("click", { bubbles: true }))
