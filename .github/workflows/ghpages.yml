@@ -16,6 +16,7 @@ jobs:
         working-directory: ${{env.working-directory}}
         run: |
           npm install
+          npm run test
           npm run build
 
       - name: Deploy 🚀
